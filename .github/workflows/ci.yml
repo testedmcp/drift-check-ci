@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out CI repository
+        uses: actions/checkout@v4
+        with:
+          path: ci
+      - name: Check out the Action repository
+        uses: actions/checkout@v4
+        with:
+          repository: testedmcp/drift-check
+          path: action
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install and test the Action
+        working-directory: action
+        run: |
+          npm ci --ignore-scripts
+          npm test
+          npm run build
+      - name: Run the Action against the fixture
+        uses: ./action
+        with:
+          slug: tiny-mcp-fixture
+          command: node ${{ github.workspace }}/ci/fixtures/tiny-mcp/server.js
+          baseline-url: ${{ github.workspace }}/ci/baselines/tiny-mcp-fixture.json
+          fail-on: breaking
+          comment: false
+          timeout: '10000'

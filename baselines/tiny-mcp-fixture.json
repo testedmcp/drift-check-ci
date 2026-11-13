@@ -1,0 +1,43 @@
+{
+  "slug": "tiny-mcp-fixture",
+  "tested_version": "1.0.0",
+  "tested_at": "2026-11-12",
+  "transport": "stdio",
+  "startup": {
+    "ok": true,
+    "ms": 12
+  },
+  "tools": [
+    {
+      "name": "echo",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "description_hash": "829a7285b87034f39b3fca797fa22b241ed3208f0a2692309a1c23ea2dd002f8"
+    },
+    {
+      "name": "ping",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "description_hash": "187e6fd0c283149f50e269e3322e99f4c31a45e5c06e2eb2162ac072bb36af64"
+    }
+  ],
+  "token_estimate": {
+    "token_count": 57,
+    "tokenizer": "cl100k_base",
+    "estimate": "approx. 57 tokens, cl100k estimate",
+    "tool_count": 2
+  },
+  "method_url": "https://testedmcp.com/guides/how-much-context-mcp-servers-cost/",
+  "schema_version": 1
+}

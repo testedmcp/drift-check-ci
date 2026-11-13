@@ -1,0 +1,26 @@
+# Example for MCP server maintainers. Copy this file into your repository
+# as .github/workflows/drift-check.yml and set slug and command.
+name: Drift Check
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: testedmcp/drift-check@v1
+        with:
+          slug: your-listing-slug
+          command: npx -y your-package
+          fail-on: breaking
+          comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
