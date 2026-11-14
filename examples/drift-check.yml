@@ -1,5 +1,6 @@
-# Example for MCP server maintainers. Copy this file into your repository
-# as .github/workflows/drift-check.yml and set slug and command.
+# Starter workflow for MCP server maintainers. Copy this file into your
+# repository as .github/workflows/drift-check.yml and set slug and command.
+# Kept outside .github/workflows/ in this companion repo so it is not run here.
 name: Drift Check
 on:
   push:
