@@ -12,15 +12,14 @@ npm ci --ignore-scripts
 npm test
 npm run build
 export INPUT_SLUG=tiny-mcp-fixture
-export INPUT_COMMAND="$CI_ROOT/fixtures/tiny-mcp/server.js"
-# The Action expects a start command; prefix node when the file is passed alone.
+# The Action expects a start command, so node is part of it.
 export INPUT_COMMAND="node $CI_ROOT/fixtures/tiny-mcp/server.js"
 export INPUT_FAIL_ON=breaking
 export INPUT_COMMENT=false
 export INPUT_BASELINE_URL="$CI_ROOT/baselines/tiny-mcp-fixture.json"
 export INPUT_TIMEOUT=10000
-# core.setFailed throws in a local run without GitHub; invoke the classifier path via the tests above,
-# then do a direct list+compare so this script also exercises the bundled file's client.
+# A local run has no GitHub job summary file, so instead of running dist/index.js this does a direct
+# list and compare with the Action's client and classifier from src/.
 node --input-type=commonjs <<'NODE'
 const path = require('path');
 const { listTools } = require(path.resolve('src/client'));
