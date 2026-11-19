@@ -9,7 +9,7 @@ This repository is maintained by the testedmcp team.
 - `fixtures/tiny-mcp/server.js` — a tiny newline-delimited JSON-RPC MCP server with two tools (`echo`, `ping`).
 - `baselines/tiny-mcp-fixture.json` — a baseline for the fixture: a JSON object whose `tools` array holds each tool's `name`, `inputSchema` and `description_hash` (SHA-256 of the description). Use it as a model for your own baseline file.
 - `.github/workflows/ci.yml` — runs the Action unit tests and then runs the Action itself against the fixture.
-- `examples/drift-check.yml` — a starter workflow maintainers can copy into their own MCP server repository as `.github/workflows/drift-check.yml`. It uses `testedmcp/drift-check@main`, because the Action has no release tag yet, and sets `baseline-url` to a baseline file in your repository, because the testedmcp.com baseline files are not published yet. It is not under `.github/workflows/` here, so it does not run on this repository.
+- `examples/drift-check.yml` — a starter workflow maintainers can copy into their own MCP server repository as `.github/workflows/drift-check.yml`. It uses `testedmcp/drift-check@v1` and sets `baseline-url` to a baseline file in your repository, because the testedmcp.com baseline files are not published yet. It is not under `.github/workflows/` here, so it does not run on this repository.
 - `scripts/run-fixture.sh` — the same fixture run, for use on a local machine (no GitHub required).
 
 ## Local fixture run

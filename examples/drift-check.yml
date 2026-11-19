@@ -1,6 +1,6 @@
 # Starter workflow for MCP server maintainers. Copy this file into your
 # repository as .github/workflows/drift-check.yml and set slug, command and baseline-url.
-# The Action has no release tag yet, so this uses @main; pin a full commit SHA for a fixed version.
+# Uses the v1 release tag; pin a full commit SHA for a fixed version.
 # baseline-url points at a baseline JSON file you keep in your repository (see
 # baselines/tiny-mcp-fixture.json for the shape).
 # Kept outside .github/workflows/ in this companion repo so it is not run here.
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: testedmcp/drift-check@main
+      - uses: testedmcp/drift-check@v1
         with:
           slug: your-listing-slug
           command: npx -y your-package
